@@ -1,11 +1,11 @@
 {
   "common": {
     "name": "aktienkurse",
-    "version": "0.4.8",
+    "version": "0.6.5",
     "news": {
-      "0.4.8": {
-        "en": "Fixed naming for installation",
-        "de": "Namensgebung für Installation korrigiert"
+      "0.6.5": {
+        "en": "Switched to text-based list to fix GUI crash",
+        "de": "Auf textbasierte Liste umgestellt, um GUI-Absturz zu beheben"
       }
     },
     "title": "Aktienkurse Frankfurt",
@@ -27,7 +27,7 @@
     ]
   },
   "native": {
-    "aktienListe": [],
+    "aktienListeText": "LHA.F, SAP.F, ADS.F, BMW.F, VOW3.F, DBK.F, CBK.F, DTE.F, IFX.F, BAS.F, BAYN.F, ALV.F, MUV2.F, RHM.F, DHL.F, SIE.F, ENR.F, TUI1.F, AIR.F, 21BC.F, A2N645.F, A2QS9W.F, GLD.F, SLV.F, PLT.F, BTC-EUR.F, ETH-EUR.F, AAPL.F, MSF.F, TSLA.F, NVDA.F, AMZ.F, META.F, GOOGL.F, NFLX.F, PYPL.F, COIN.F, ZAL.F, HFG.F, CON.F, PAH3.F, PUM.F, BEI.F, SY1.F, MTX.F, BNR.F, QIA.F, FRE.F, FME.F, SART.F, HEI.F, LIN.F, MRK.F, HEN3.F, HNR1.F, VNA.F, GXI.F, AFX.F, JEN.F, AIXA.F, NDX1.F, S92.F, VAR1.F, BOSS.F, FRA.F, EVK.F, WCH.F, LXS.F, EVT.F, O2D.F, UTDI.F, FNTN.F, WAF.F, KBX.F, KGX.F, JUN3.F, STN.F, CEC.F, B4B.F, HOT.F, SNE.F, BNP.F, TOT.F, OR.F, MC.F, ASL.F, UNA.F, SAN.F, IBE.F, NESN.F, ROG.F, NOVN.F, SHELL.F, BP.F, RIO.F, GLEN.F, WMT.F, DIS.F, SQ.F, A2P7ZJ.F",
     "intervall": 10
   }
 }
