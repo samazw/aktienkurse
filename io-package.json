@@ -1,46 +1,33 @@
 {
   "common": {
-    "name": "frankfurt-boerse",
-    "version": "0.2.0",
+    "name": "aktienkurse",
+    "version": "0.4.5",
     "news": {
-      "0.2.0": {
-        "en": "Initial release with JSON config and daemon mode",
-        "de": "Erstveröffentlichung mit JSON-Konfiguration und Daemon-Modus"
+      "0.4.5": {
+        "en": "Fixed naming for installation",
+        "de": "Namensgebung für Installation korrigiert"
       }
     },
-    "title": "Frankfurt Börse Kursabfrage",
-    "titleLang": {
-      "en": "Frankfurt Stock Exchange",
-      "de": "Frankfurt Börse Kursabfrage"
-    },
-    "desc": {
-      "en": "Retrieves stock prices from Frankfurt Stock Exchange",
-      "de": "Ruft Aktienkurse der Frankfurter Börse ab"
-    },
+    "title": "Aktienkurse Frankfurt",
     "authors": ["samazw"],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "main.js",
-    "icon": "chart.png",
-    "enabled": true,
-    "extIcon": "https://githubusercontent.com",
-    "type": "weather",
-    "keywords": ["finance", "stock", "frankfurt", "boerse"],
-    "loglevel": "info",
     "mode": "daemon",
+    "enabled": true,
     "adminUI": {
       "config": "json"
     },
+    "materialize": true,
+    "type": "weather",
     "dependencies": [
       {
         "js-controller": ">=3.0.0"
       }
-    ],
-    "materialize": true,
-    "compact": true
+    ]
   },
   "native": {
-    "aktienAuswahl": "LHA.F",
+    "aktienListe": [],
     "intervall": 10
   }
 }
