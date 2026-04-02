@@ -9,22 +9,39 @@ class FrankfurtBoerse extends utils.Adapter {
     }
 
     async onReady() {
-        this.updateData();
+        // Ersten Durchlauf starten
+        await this.updateData();
+        
+        // Intervall einrichten
         const intervall = parseInt(this.config.intervall) || 10;
         this.updateInterval = setInterval(() => this.updateData(), intervall * 60000);
     }
 
     async updateData() {
         const aktien = this.config.aktienListe;
-        if (!aktien || !Array.isArray(aktien)) return;
+        if (!aktien || !Array.isArray(aktien)) {
+            this.log.info('Keine Aktien in der Liste konfiguriert.');
+            return;
+        }
 
         for (const eintrag of aktien) {
             const symbol = eintrag.symbol;
-            const dpName = `kurs_${symbol.replace('.', '_')}`;
+            if (!symbol) continue;
 
+            // Pfad mit Unterordner "Aktien"
+            const dpName = `Aktien.kurs_${symbol.replace('.', '_')}`;
+
+            // Datenpunkt im Unterordner erstellen
             await this.setObjectNotExistsAsync(dpName, {
                 type: 'state',
-                common: { name: `Kurs ${symbol}`, type: 'number', role: 'value.price', unit: 'EUR', read: true, write: false },
+                common: {
+                    name: `Kurs ${symbol}`,
+                    type: 'number',
+                    role: 'value.price',
+                    unit: 'EUR',
+                    read: true,
+                    write: false
+                },
                 native: {},
             });
 
@@ -36,19 +53,27 @@ class FrankfurtBoerse extends utils.Adapter {
         try {
             const url = `https://yahoo.com{symbol}`;
             const response = await axios.get(url);
-            if (response.data?.chart?.result?.[0]?.meta) {
+            
+            if (response.data && response.data.chart && response.data.chart.result) {
                 const price = response.data.chart.result[0].meta.regularMarketPrice;
                 this.setState(dpName, { val: price, ack: true });
+                this.log.debug(`Update für ${symbol}: ${price} EUR`);
             }
         } catch (e) {
-            this.log.error(`Fehler bei ${symbol}: ${e.message}`);
+            this.log.error(`Fehler beim Abrufen von ${symbol}: ${e.message}`);
         }
     }
 
     onUnload(callback) {
-        clearInterval(this.updateInterval);
+        if (this.updateInterval) {
+            clearInterval(this.updateInterval);
+        }
         callback();
     }
 }
 
-if (require.main === module) { new FrankfurtBoerse(); } else { module.exports = FrankfurtBoerse; }
+if (require.main === module) {
+    new FrankfurtBoerse();
+} else {
+    module.exports = FrankfurtBoerse;
+}
