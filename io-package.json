@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "aktienkurse",
-    "version": "0.4.5",
+    "version": "0.4.6",
     "news": {
-      "0.4.5": {
+      "0.4.6": {
         "en": "Fixed naming for installation",
         "de": "Namensgebung für Installation korrigiert"
       }
