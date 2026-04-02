@@ -3,7 +3,7 @@
   "items": {
     "aktienListe": {
       "type": "table",
-      "label": "Aktienliste (Frankfurt .F)",
+      "label": "Deine Aktienliste (Frankfurt .F)",
       "sm": 12,
       "items": {
         "symbol": {
